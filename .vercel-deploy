@@ -1,0 +1,10 @@
+# This is NOT a Remix project
+# This is a Vite + React SPA
+# DO NOT use @vercel/remix-builder
+
+# If you see this file, the deployment should use static file serving only
+# No framework detection should be performed
+
+# Build command should be: exit 0 (do nothing)
+# Install command should be: exit 0 (do nothing)
+# Serve static files from root directory

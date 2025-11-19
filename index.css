@@ -1,0 +1,316 @@
+@import './src/styles/variables.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================
+   RESET E CONFIGURAÇÕES BASE
+   =========================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  min-height: 100vh;
+}
+
+/* ===========================================
+   DESIGN TOKENS - PALETA DE CORES PREMIUM
+   =========================================== */
+
+:root {
+  /* Cores Principais - Herdados do variables.css */
+  --color-primary: var(--color-black);
+  --color-secondary: var(--color-gold-dark);
+  --color-accent: var(--color-gold);
+  --color-accent-light: var(--color-gold-light);
+  --color-tertiary: var(--color-champagne);
+  --color-surface: var(--color-beige);
+
+  /* Backgrounds - Herdados do variables.css */
+  --color-background: var(--color-black);
+  --color-background-secondary: var(--color-gray-800);
+  --color-background-tertiary: var(--color-gray-700);
+  --color-admin-background: var(--color-gray-100);
+  --color-admin-background-secondary: var(--color-white);
+  --color-admin-background-tertiary: #fefefe;
+
+  /* Textos - Herdados do variables.css */
+  --color-text-primary: var(--color-gray-100);
+  --color-text-secondary: var(--color-gray-400);
+  --color-text-muted: var(--color-gray-300);
+  --color-admin-text-primary: var(--color-white);
+  --color-admin-text-secondary: var(--color-gray-200);
+  --color-admin-text-muted: var(--color-gray-300);
+
+  /* Bordas - Herdados do variables.css */
+  --color-border: var(--color-gold-light);
+  --color-border-secondary: var(--color-gray-700);
+  --color-admin-border: #e0e0e0;
+
+  /* Estados - Herdados do variables.css */
+  --color-hover: #A0522D;
+  --color-active: #af830a;
+  --color-focus: #B8860B;
+
+  /* Cards - Herdados do variables.css */
+  --color-card: var(--color-gray-800);
+  --color-card-hover: var(--color-gray-700);
+  --color-admin-card: var(--color-white);
+  --color-admin-card-hover: #f8f8f8;
+
+  /* Formulários - Herdados do variables.css */
+  --color-input: #b19f67;
+  --color-input-border: var(--color-gold-light);
+  --color-input-focus: #C9A227;
+
+  /* Gradientes - Herdados do variables.css */
+  --gradient-primary: linear-gradient(135deg, #B8860B 0%, #ac7a0e 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--color-black) 0%, var(--color-gray-800) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--color-champagne) 0%, var(--color-gold) 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+
+  /* Sombras - Herdados do variables.css */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 20px rgba(184, 134, 11, 0.3);
+}
+
+/* ===========================================
+   CLASSES UTILITÁRIAS CUSTOMIZADAS
+   =========================================== */
+
+/* Backgrounds */
+.bg-primary { background-color: var(--color-primary); }
+.bg-secondary { background-color: var(--color-secondary); }
+.bg-accent { background-color: var(--color-accent); }
+.bg-tertiary { background-color: var(--color-tertiary); }
+.bg-surface { background-color: var(--color-surface); }
+.bg-background { background-color: var(--color-background); }
+.bg-background-secondary { background-color: var(--color-background-secondary); }
+.bg-background-tertiary { background-color: var(--color-background-tertiary); }
+.bg-background-pastel-1 { background-color: var(--color-background-pastel-1); }
+.bg-background-pastel-2 { background-color: var(--color-background-pastel-2); }
+.bg-background-pastel-3 { background-color: var(--color-background-pastel-3); }
+.bg-background-pastel-4 { background-color: var(--color-background-pastel-4); }
+
+/* Text */
+.text-primary { color: var(--color-text-primary); }
+.text-secondary { color: var(--color-text-secondary); }
+.text-accent { color: var(--color-accent); }
+.text-muted { color: var(--color-text-muted); }
+.text-admin-primary { color: var(--color-admin-text-primary); }
+.text-admin-secondary { color: var(--color-admin-text-secondary); }
+.text-admin-muted { color: var(--color-admin-text-muted); }
+
+/* Borders */
+.border-primary { border-color: var(--color-border); }
+.border-secondary { border-color: var(--color-border-secondary); }
+.border-admin { border-color: var(--color-admin-border); }
+
+/* Estados Interativos */
+.hover\:bg-hover:hover { background-color: var(--color-hover); }
+.hover\:bg-card-hover:hover { background-color: var(--color-card-hover); }
+.hover\:text-accent:hover { color: var(--color-accent); }
+.focus\:border-focus:focus { border-color: var(--color-focus); }
+.focus\:ring-accent:focus { --tw-ring-color: var(--color-accent); }
+
+/* ===========================================
+   GRADIENTES E SOMBRAS PREMIUM
+   =========================================== */
+
+/* Gradientes */
+.bg-gradient-primary { background: var(--gradient-primary); }
+.bg-gradient-secondary { background: var(--gradient-secondary); }
+.bg-gradient-accent { background: var(--gradient-accent); }
+.bg-gradient-glass { background: var(--gradient-glass); }
+
+/* Sombras */
+.shadow-glow { box-shadow: var(--shadow-glow); }
+.shadow-premium { box-shadow: var(--shadow-xl); }
+
+/* ===========================================
+   COMPONENTES CUSTOMIZADOS PREMIUM
+   =========================================== */
+
+/* Botões */
+.btn-primary {
+  @apply relative overflow-hidden bg-gradient-primary text-primary font-semibold px-6 py-3 rounded-xl shadow-2xl transition-all duration-500 transform hover:scale-110 hover:shadow-[0_0_40px_rgba(184,134,11,0.8)] focus:outline-none focus:ring-4 focus:ring-accent active:scale-95;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  box-shadow: 0 0 30px rgba(184, 134, 11, 0.4), 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-secondary {
+  @apply bg-gradient-glass backdrop-blur-sm text-primary border border-secondary px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:bg-gradient-accent hover:border-accent hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-accent;
+}
+
+/* Formulários */
+.input-primary {
+  @apply bg-gradient-glass backdrop-blur-sm text-primary border border-secondary rounded-xl px-4 py-3 transition-all duration-300 focus:border-accent focus:ring-4 focus:ring-accent placeholder:text-muted;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Cards */
+.card-primary {
+  @apply bg-gradient-glass backdrop-blur-lg border border-secondary rounded-2xl p-8 shadow-xl transition-all duration-300 shadow-glow hover:border-accent;
+}
+
+.card-premium {
+  @apply bg-gradient-secondary backdrop-blur-xl border border-accent rounded-3xl p-8 shadow-glow transition-all duration-500 hover:scale-105 hover:shadow-xl;
+}
+
+.glass-effect {
+  @apply bg-gradient-glass backdrop-blur-xl border border-white;
+}
+
+/* Texto com Gradiente */
+.text-gradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+/* ===========================================
+   ANIMAÇÕES
+   =========================================== */
+
+/* Animação de Gradiente */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Animação Shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Animações de Entrada */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* ===========================================
+   SCROLLBAR CUSTOMIZADA
+   =========================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-background-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-secondary);
+  border-radius: 4px;
+}
+
+/* ===========================================
+   ESTADOS DE LOADING E INTERAÇÃO
+   =========================================== */
+
+.loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--color-accent);
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===========================================
+   MELHORIAS DE FOCO E ACESSIBILIDADE
+   =========================================== */
+
+.focus-visible:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* ===========================================
+   ESTADOS DE HOVER MELHORADOS
+   =========================================== */
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* ===========================================
+   MELHORIAS DE PERFORMANCE
+   =========================================== */
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}

@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "name": "relluarte-gestao-static",
+  "buildCommand": "./build.sh",
+  "outputDirectory": ".",
+  "installCommand": "exit 0",
+  "framework": "other",
+  "functions": {},
+  "build": null,
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "VERCEL_BUILD": "false"
+  }
+}

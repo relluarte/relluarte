@@ -1,0 +1,267 @@
+/* Exemplo de CSS Modules - Button.module.css */
+.button {
+  display: inline-block;
+  padding: var(--padding-md);
+  border: none;
+  border-radius: var(--border-radius-lg);
+  background: var(--gradient-primary);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
+  cursor: pointer;
+}
+
+.button:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.button:disabled {
+  opacity: 0.6;
+  transform: none;
+  cursor: not-allowed;
+}
+
+/* Variantes do botão */
+.primary {
+  background: var(--gradient-primary);
+  composes: button;
+}
+
+.secondary {
+  background: var(--gradient-secondary);
+  color: var(--color-text-primary);
+  composes: button;
+}
+
+.danger {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  composes: button;
+}
+
+/* Tamanhos */
+.small {
+  padding: var(--padding-sm);
+  font-size: var(--font-size-sm);
+}
+
+.medium {
+  padding: var(--padding-md);
+  font-size: var(--font-size-base);
+}
+
+.large {
+  padding: var(--padding-lg);
+  font-size: var(--font-size-lg);
+}
+
+/* ===========================================
+   CARD COMPONENT
+   =========================================== */
+
+.card {
+  padding: var(--padding-lg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-xl);
+  background: var(--color-card);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
+}
+
+.card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+}
+
+.cardHeader {
+  margin-bottom: var(--spacing-4);
+  padding-bottom: var(--spacing-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cardTitle {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+}
+
+.cardContent {
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--spacing-4);
+  padding-top: var(--spacing-3);
+  border-top: 1px solid var(--color-border);
+  gap: var(--spacing-3);
+}
+
+/* ===========================================
+   FORM COMPONENTS
+   =========================================== */
+
+.formGroup {
+  margin-bottom: var(--spacing-4);
+}
+
+.label {
+  display: block;
+  margin-bottom: var(--spacing-2);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.input {
+  width: 100%;
+  padding: var(--padding-md);
+  border: 2px solid var(--color-input-border);
+  border-radius: var(--border-radius-lg);
+  background: var(--color-input);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  box-sizing: border-box;
+  transition: var(--transition-base);
+}
+
+.input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgb(184 134 11 / 20%);
+  outline: none;
+}
+
+.input:invalid {
+  border-color: #dc3545;
+}
+
+.error {
+  margin-top: var(--spacing-1);
+  color: #dc3545;
+  font-size: var(--font-size-sm);
+}
+
+.textarea {
+  min-height: 100px;
+  composes: input;
+  resize: vertical;
+}
+
+.select {
+  cursor: pointer;
+  composes: input;
+}
+
+/* ===========================================
+   LAYOUT COMPONENTS
+   =========================================== */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-4);
+}
+
+.grid {
+  display: grid;
+  gap: var(--spacing-6);
+}
+
+.grid2 {
+  composes: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid3 {
+  composes: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.flex {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.flexColumn {
+  flex-direction: column;
+  composes: flex;
+}
+
+.flexCenter {
+  align-items: center;
+  justify-content: center;
+  composes: flex;
+}
+
+.flexBetween {
+  justify-content: space-between;
+  composes: flex;
+}
+
+.flexWrap {
+  flex-wrap: wrap;
+  composes: flex;
+}
+
+/* ===========================================
+   UTILITY CLASSES
+   =========================================== */
+
+.hidden {
+  display: none;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.loading {
+  position: relative;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--color-accent);
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
