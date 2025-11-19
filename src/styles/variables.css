@@ -1,0 +1,419 @@
+/* ===========================================
+   VARIÁVEIS GLOBAIS - RELLUARTE DESIGN SYSTEM
+   ===========================================
+   Arquivo centralizado para todas as variáveis de design.
+   Modificações aqui afetam toda a aplicação automaticamente.
+   =========================================== */
+
+/* ===========================================
+   CORES PRINCIPAIS
+   =========================================== */
+
+:root {
+  /* Paleta Base */
+  --color-black: #000;
+  --color-white: #fff;
+  --color-gold-dark: #9e7306;
+  --color-gold: #b99804;
+  --color-gold-light: #d4af37;
+  --color-champagne: #e8dcc2;
+  --color-beige: #e4d8c5;
+
+  /* Tons de Cinza */
+  --color-gray-900: #1a1a1a;
+  --color-gray-800: #2a2a2a;
+  --color-gray-700: #4a4a4a;
+  --color-gray-600: #6a6a6a;
+  --color-gray-500: #9a9a9a;
+  --color-gray-400: #c4b7a6;
+  --color-gray-300: #d4c4a8;
+  --color-gray-200: #e8dcc2;
+  --color-gray-100: #f8f6f0;
+
+  /* ===========================================
+     SEMÂNTICA DE CORES (Mapeamento para uso)
+     =========================================== */
+
+  /* Cores Principais */
+  --color-primary: var(--color-black);
+  --color-secondary: var(--color-gold-dark);
+  --color-accent: var(--color-gold);
+  --color-accent-light: var(--color-gold-light);
+  --color-tertiary: var(--color-champagne);
+  --color-surface: var(--color-beige);
+
+  /* ===========================================
+     BACKGROUNDS
+     =========================================== */
+
+  /* Backgrounds Principais */
+  --color-background: var(--color-black);
+  --color-background-secondary: var(--color-gray-800);
+  --color-background-tertiary: var(--color-gray-700);
+
+  /* Backgrounds Admin (Tema Claro) */
+  --color-admin-background: var(--color-gray-100);
+  --color-admin-background-secondary: var(--color-white);
+  --color-admin-background-tertiary: #fefefe;
+
+  /* Backgrounds Pastéis */
+  --color-background-pastel-1: #fefefe;
+  --color-background-pastel-2: var(--color-gray-100);
+  --color-background-pastel-3: #f5f2ea;
+  --color-background-pastel-4: #f0ede6;
+
+  /* ===========================================
+     TEXTOS
+     =========================================== */
+
+  /* Textos Principais (Tema Escuro) */
+  --color-text-primary: var(--color-gray-100);
+  --color-text-secondary: var(--color-gray-400);
+  --color-text-muted: var(--color-gray-300);
+
+  /* Textos Admin (Tema Claro) */
+  --color-admin-text-primary: var(--color-white);
+  --color-admin-text-secondary: var(--color-gray-200);
+  --color-admin-text-muted: var(--color-gray-300);
+
+  /* ===========================================
+     BORDAS
+     =========================================== */
+
+  --color-border: var(--color-gold-light);
+  --color-border-secondary: var(--color-gray-700);
+  --color-admin-border: #e0e0e0;
+
+  /* ===========================================
+     ESTADOS INTERATIVOS
+     =========================================== */
+
+  --color-hover: #a0522d;
+  --color-active: #af830a;
+  --color-focus: #b8860b;
+
+  /* ===========================================
+     CARDS E SURFACES
+     =========================================== */
+
+  --color-card: var(--color-gray-800);
+  --color-card-hover: var(--color-gray-700);
+  --color-admin-card: var(--color-white);
+  --color-admin-card-hover: #f8f8f8;
+
+  /* ===========================================
+     FORMULÁRIOS
+     =========================================== */
+
+  --color-input: #b19f67;
+  --color-input-border: var(--color-gold-light);
+  --color-input-focus: #c9a227;
+
+  /* ===========================================
+     GRADIENTES
+     =========================================== */
+
+  --gradient-primary: linear-gradient(135deg, #b8860b 0%, #ac7a0e 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--color-black) 0%, var(--color-gray-800) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--color-champagne) 0%, var(--color-gold) 100%);
+  --gradient-glass: linear-gradient(135deg, rgb(255 255 255 / 10%) 0%, rgb(255 255 255 / 5%) 100%);
+
+  /* ===========================================
+     SOMBRAS
+     =========================================== */
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 5%);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -1px rgb(0 0 0 / 6%);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 10%), 0 4px 6px -2px rgb(0 0 0 / 5%);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 10px 10px -5px rgb(0 0 0 / 4%);
+  --shadow-glow: 0 0 20px rgb(184 134 11 / 30%);
+
+  /* ===========================================
+     ESPAÇAMENTOS (Sistema de Design)
+     =========================================== */
+
+  /* Espaçamentos Base (4px scale) */
+  --spacing-1: 0.25rem; /* 4px */
+  --spacing-2: 0.5rem; /* 8px */
+  --spacing-3: 0.75rem; /* 12px */
+  --spacing-4: 1rem; /* 16px */
+  --spacing-5: 1.25rem; /* 20px */
+  --spacing-6: 1.5rem; /* 24px */
+  --spacing-8: 2rem; /* 32px */
+  --spacing-10: 2.5rem; /* 40px */
+  --spacing-12: 3rem; /* 48px */
+  --spacing-16: 4rem; /* 64px */
+  --spacing-20: 5rem; /* 80px */
+  --spacing-24: 6rem; /* 96px */
+  --spacing-32: 8rem; /* 128px */
+
+  /* Padding/Margin Padrões */
+  --padding-xs: var(--spacing-2);
+  --padding-sm: var(--spacing-4);
+  --padding-md: var(--spacing-6);
+  --padding-lg: var(--spacing-8);
+  --padding-xl: var(--spacing-12);
+
+  /* Bordas */
+  --border-radius-sm: 0.25rem; /* 4px */
+  --border-radius: 0.5rem; /* 8px */
+  --border-radius-md: 0.75rem; /* 12px */
+  --border-radius-lg: 1rem; /* 16px */
+  --border-radius-xl: 1.5rem; /* 24px */
+  --border-radius-2xl: 2rem; /* 32px */
+  --border-radius-3xl: 3rem; /* 48px */
+
+  /* Fontes */
+  --font-size-xs: 0.75rem; /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-base: 1rem; /* 16px */
+  --font-size-lg: 1.125rem; /* 18px */
+  --font-size-xl: 1.25rem; /* 20px */
+  --font-size-2xl: 1.5rem; /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem; /* 36px */
+  --font-size-5xl: 3rem; /* 48px */
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-snug: 1.375;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.625;
+  --line-height-loose: 2;
+
+  /* Z-Index */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+
+  /* Transições */
+  --transition-fast: 150ms ease-in-out;
+  --transition-base: 300ms ease-in-out;
+  --transition-slow: 500ms ease-in-out;
+
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/* ===========================================
+   UTILITÁRIOS DE ESPAÇAMENTO
+   =========================================== */
+
+/* Padding */
+.p-xs {
+  padding: var(--padding-xs);
+}
+
+.p-sm {
+  padding: var(--padding-sm);
+}
+
+.p-md {
+  padding: var(--padding-md);
+}
+
+.p-lg {
+  padding: var(--padding-lg);
+}
+
+.p-xl {
+  padding: var(--padding-xl);
+}
+
+/* Margin */
+.m-xs {
+  margin: var(--padding-xs);
+}
+
+.m-sm {
+  margin: var(--padding-sm);
+}
+
+.m-md {
+  margin: var(--padding-md);
+}
+
+.m-lg {
+  margin: var(--padding-lg);
+}
+
+.m-xl {
+  margin: var(--padding-xl);
+}
+
+/* Espaçamento Vertical */
+.my-xs {
+  margin-top: var(--padding-xs);
+  margin-bottom: var(--padding-xs);
+}
+
+.my-sm {
+  margin-top: var(--padding-sm);
+  margin-bottom: var(--padding-sm);
+}
+
+.my-md {
+  margin-top: var(--padding-md);
+  margin-bottom: var(--padding-md);
+}
+
+.my-lg {
+  margin-top: var(--padding-lg);
+  margin-bottom: var(--padding-lg);
+}
+
+.my-xl {
+  margin-top: var(--padding-xl);
+  margin-bottom: var(--padding-xl);
+}
+
+/* ===========================================
+   UTILITÁRIOS DE TIPOGRAFIA
+   =========================================== */
+
+/* Tamanhos de Fonte */
+.text-xs {
+  font-size: var(--font-size-xs);
+}
+
+.text-sm {
+  font-size: var(--font-size-sm);
+}
+
+.text-base {
+  font-size: var(--font-size-base);
+}
+
+.text-lg {
+  font-size: var(--font-size-lg);
+}
+
+.text-xl {
+  font-size: var(--font-size-xl);
+}
+
+.text-2xl {
+  font-size: var(--font-size-2xl);
+}
+
+.text-3xl {
+  font-size: var(--font-size-3xl);
+}
+
+.text-4xl {
+  font-size: var(--font-size-4xl);
+}
+
+.text-5xl {
+  font-size: var(--font-size-5xl);
+}
+
+/* Pesos de Fonte */
+.font-light {
+  font-weight: var(--font-weight-light);
+}
+
+.font-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.font-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.font-extrabold {
+  font-weight: var(--font-weight-extrabold);
+}
+
+/* Line Heights */
+.leading-tight {
+  line-height: var(--line-height-tight);
+}
+
+.leading-snug {
+  line-height: var(--line-height-snug);
+}
+
+.leading-normal {
+  line-height: var(--line-height-normal);
+}
+
+.leading-relaxed {
+  line-height: var(--line-height-relaxed);
+}
+
+.leading-loose {
+  line-height: var(--line-height-loose);
+}
+
+/* ===========================================
+   UTILITÁRIOS DE BORDAS
+   =========================================== */
+
+.rounded-sm {
+  border-radius: var(--border-radius-sm);
+}
+
+.rounded {
+  border-radius: var(--border-radius);
+}
+
+.rounded-md {
+  border-radius: var(--border-radius-md);
+}
+
+.rounded-lg {
+  border-radius: var(--border-radius-lg);
+}
+
+.rounded-xl {
+  border-radius: var(--border-radius-xl);
+}
+
+.rounded-2xl {
+  border-radius: var(--border-radius-2xl);
+}
+
+.rounded-3xl {
+  border-radius: var(--border-radius-3xl);
+}
+
+/* ===========================================
+   UTILITÁRIOS DE TRANSIÇÕES
+   =========================================== */
+
+.transition-fast {
+  transition: var(--transition-fast);
+}
+
+.transition-base {
+  transition: var(--transition-base);
+}
+
+.transition-slow {
+  transition: var(--transition-slow);
+}
