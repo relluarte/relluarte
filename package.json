@@ -5,7 +5,7 @@
   "description": "Sistema de Gestão Relluarte - Vite + React Application",
   "type": "module",
   "engines": {
-    "node": "18.x"
+    "node": "22.x"
   },
   "keywords": [
     "vite",
@@ -19,9 +19,9 @@
     "url": "https://github.com/relluarte/gestaorelluarte"
   },
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "lint": "stylelint \"src/**/*.{css,scss}\" --fix",
     "lint:check": "stylelint \"src/**/*.{css,scss}\"",
     "lint:js": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix",
