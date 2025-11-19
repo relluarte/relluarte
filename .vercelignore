@@ -6,30 +6,7 @@ node_modules/
 # Testing
 coverage/
 
-# Source files (keep only built files)
-src/
-components/
-services/
-*.config.js
-*.config.ts
-vite.config.ts
-tailwind.config.js
-postcss.config.js
-eslint.config.js
-.stylelintrc.json
-.prettierrc.json
-.stylelintignore
-.prettierignore
-package.json
-package-lock.json
-tsconfig.json
-README.md
-README-colors.md
-metadata.json
-constants.ts
-types.ts
-index.tsx
-App.tsx
+
 
 # Environment variables
 .env
