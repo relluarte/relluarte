@@ -3,7 +3,7 @@
   "name": "relluarte-gestao-static",
   "buildCommand": "./build.sh",
   "outputDirectory": "dist",
-  "installCommand": "npm install",
+  "installCommand": "npm install --include=dev",
   "framework": null,
   "functions": {},
   "build": null,
