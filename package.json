@@ -1,13 +1,18 @@
 {
-  "name": "relluarte---gestão",
+  "name": "relluarte-gestao",
   "private": true,
   "version": "0.0.0",
   "description": "Sistema de Gestão Relluarte - Vite + React Application",
   "type": "module",
   "engines": {
-    "node": ">=18.0.0"
+    "node": "20.x"
   },
-  "keywords": ["vite", "react", "typescript", "spa"],
+  "keywords": [
+    "vite",
+    "react",
+    "typescript",
+    "spa"
+  ],
   "homepage": "https://gestaorelluarte.vercel.app",
   "repository": {
     "type": "git",
