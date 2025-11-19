@@ -2,9 +2,9 @@
   "version": 2,
   "name": "relluarte-gestao-static",
   "buildCommand": "./build.sh",
-  "outputDirectory": ".",
-  "installCommand": "exit 0",
-  "framework": "other",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "framework": null,
   "functions": {},
   "build": null,
   "routes": [
@@ -14,6 +14,6 @@
     }
   ],
   "env": {
-    "VERCEL_BUILD": "false"
+    "VERCEL_BUILD": "true"
   }
 }
