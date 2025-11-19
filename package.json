@@ -15,7 +15,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "npx vite build",
     "preview": "vite preview",
     "lint": "stylelint \"src/**/*.{css,scss}\" --fix",
     "lint:check": "stylelint \"src/**/*.{css,scss}\"",

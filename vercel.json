@@ -4,7 +4,7 @@
   "buildCommand": "./build.sh",
   "outputDirectory": "dist",
   "installCommand": "npm install --include=dev",
-  "framework": null,
+  "framework": "other",
   "functions": {},
   "build": null,
   "routes": [
