@@ -46,12 +46,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ setCurrentView, userRole, onLo
     { view: 'sales', label: 'Vendas', icon: ShoppingCart },
     { view: 'clients', label: 'Clientes', icon: Users },
     { view: 'calculator', label: 'Calculadora', icon: Calculator },
+    { view: 'automation', label: 'Atendimento', icon: Bot },
   ] as const;
 
   const adminItems = [
     { view: 'products', label: 'Produtos', icon: Package },
     { view: 'stores', label: 'Lojas', icon: Building2 },
-    { view: 'automation', label: 'Atendimento & Automação', icon: Bot },
   ] as const;
 
   const handleNavClick = (view: 'dashboard' | 'proposals' | 'sales' | 'clients' | 'products' | 'stores' | 'calculator' | 'automation') => {
