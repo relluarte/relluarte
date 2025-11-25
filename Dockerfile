@@ -15,6 +15,9 @@ COPY . .
 # Build the application with Vite
 RUN npx vite build
 
+# List dist contents for debugging
+RUN ls -la /app/dist
+
 # Production stage
 FROM nginx:alpine
 
@@ -23,6 +26,10 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Set proper permissions
+RUN chown -R nginx:nginx /usr/share/nginx/html && \
+    chmod -R 755 /usr/share/nginx/html
 
 # Expose port
 EXPOSE 80
