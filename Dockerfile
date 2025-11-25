@@ -1,45 +1,34 @@
 # Build stage
 FROM node:22-alpine AS builder
-
 WORKDIR /app
-
-# Copy package files
 COPY package*.json ./
-
-# Install dependencies
 RUN npm install --legacy-peer-deps
-
-# Copy source files
 COPY . .
-
-# Build the application with Vite
 RUN npx vite build
 
-# Production stage
-FROM nginx:alpine
+# Production stage - Using unprivileged nginx image
+FROM nginxinc/nginx-unprivileged:alpine
 
-# Create directory and set permissions
-RUN mkdir -p /var/www/html && \
-    chown -R nginx:nginx /var/www/html && \
-    chmod -R 755 /var/www/html && \
-    chown -R nginx:nginx /var/cache/nginx && \
-    chown -R nginx:nginx /var/log/nginx && \
-    chown -R nginx:nginx /etc/nginx/conf.d
+# Switch to root temporarily to set permissions
+USER root
 
-# Copy built files from builder stage
-COPY --from=builder /app/dist /var/www/html
+# Copy built files
+COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Create a test file to verify server is working
+RUN echo "<html><body><h1>Server is working!</h1><p>If you see this, Nginx is fine.</p></body></html>" > /usr/share/nginx/html/test.html
 
-# Set proper permissions again after copy
-RUN chown -R nginx:nginx /var/www/html && \
-    chmod -R 755 /var/www/html
+# Ensure permissions
+RUN chown -R nginx:nginx /usr/share/nginx/html && \
+    chmod -R 755 /usr/share/nginx/html
 
-# Switch to non-root user
+# Switch back to nginx user
 USER nginx
 
-# Expose port
+# Copy custom config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Expose port (default for this image is 8080)
 EXPOSE 8080
 
 # Start nginx
