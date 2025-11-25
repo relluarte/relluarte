@@ -15,8 +15,9 @@ COPY . .
 # Build the application with Vite
 RUN npx vite build
 
-# List dist contents for debugging
+# Debug: Check if index.html exists and list files
 RUN ls -la /app/dist
+RUN test -f /app/dist/index.html || (echo "CRITICAL ERROR: index.html not found in /app/dist!" && exit 1)
 
 # Production stage
 FROM nginx:alpine
@@ -27,9 +28,8 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 # Copy nginx configuration
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Set proper permissions
-RUN chown -R nginx:nginx /usr/share/nginx/html && \
-    chmod -R 755 /usr/share/nginx/html
+# Set permissive permissions for debugging
+RUN chmod -R 777 /usr/share/nginx/html
 
 # Expose port
 EXPOSE 80
