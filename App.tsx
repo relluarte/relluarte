@@ -16,8 +16,9 @@ import BudgetCalculator from './components/BudgetCalculator';
 import SalesList from './components/SalesList';
 import ClientsList from './components/ClientsList';
 import ErrorBoundary from './components/ErrorBoundary';
+import AutomationPanel from './components/AutomationPanel';
 
-type View = 'dashboard' | 'proposals' | 'sales' | 'clients' | 'products' | 'stores' | 'new_proposal' | 'edit_proposal' | 'new_product' | 'edit_product' | 'new_store' | 'edit_store' | 'calculator';
+type View = 'dashboard' | 'proposals' | 'sales' | 'clients' | 'products' | 'stores' | 'new_proposal' | 'edit_proposal' | 'new_product' | 'edit_product' | 'new_store' | 'edit_store' | 'calculator' | 'automation';
 type AppState = 'landing' | 'login' | 'crm';
 
 const App: React.FC = () => {
@@ -29,7 +30,7 @@ const App: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [user, setUser] = useState<{ role: UserRole } | null>(null);
   const [clients] = useState<Client[]>(MOCK_CLIENTS);
-  
+
   const [stores, setStores] = useState<Store[]>(MOCK_STORES);
   const [selectedStore, setSelectedStore] = useState<Store | null>(MOCK_STORES[0] || null);
   const [selectedStoreForEdit, setSelectedStoreForEdit] = useState<Store | null>(null);
@@ -39,9 +40,9 @@ const App: React.FC = () => {
   const handleLogin = (role: UserRole) => {
     setUser({ role });
     if (role === 'admin' && stores.length > 0) {
-        setSelectedStore(stores[0]);
+      setSelectedStore(stores[0]);
     } else if (role === 'vendedor' && stores.length > 0) {
-        setSelectedStore(stores[0]);
+      setSelectedStore(stores[0]);
     }
     setAppState('crm');
   };
@@ -52,31 +53,31 @@ const App: React.FC = () => {
     setCurrentView('dashboard');
     setAppState('landing');
   };
-  
+
   const handleSaveStore = (storeToSave: Omit<Store, 'id'> & { id?: number }) => {
     setStores(prevStores => {
-        if (storeToSave.id) {
-            return prevStores.map(s => s.id === storeToSave.id ? { ...s, ...storeToSave } as Store : s);
-        } else {
-            const newId = prevStores.length > 0 ? Math.max(...prevStores.map(s => s.id)) + 1 : 1;
-            const newStore: Store = { ...storeToSave, id: newId };
-            return [...prevStores, newStore];
-        }
+      if (storeToSave.id) {
+        return prevStores.map(s => s.id === storeToSave.id ? { ...s, ...storeToSave } as Store : s);
+      } else {
+        const newId = prevStores.length > 0 ? Math.max(...prevStores.map(s => s.id)) + 1 : 1;
+        const newStore: Store = { ...storeToSave, id: newId };
+        return [...prevStores, newStore];
+      }
     });
     setCurrentView('stores');
   };
 
   const handleDeleteStore = (storeId: number) => {
-      if (stores.length <= 1) {
-          alert("Não é possível excluir a única loja restante.");
-          return;
+    if (stores.length <= 1) {
+      alert("Não é possível excluir a única loja restante.");
+      return;
+    }
+    if (window.confirm('Tem certeza que deseja excluir esta loja?')) {
+      setStores(prev => prev.filter(s => s.id !== storeId));
+      if (selectedStore?.id === storeId) {
+        setSelectedStore(stores.find(s => s.id !== storeId) || null);
       }
-      if (window.confirm('Tem certeza que deseja excluir esta loja?')) {
-          setStores(prev => prev.filter(s => s.id !== storeId));
-          if(selectedStore?.id === storeId) {
-              setSelectedStore(stores.find(s => s.id !== storeId) || null);
-          }
-      }
+    }
   };
 
   const handleEditStore = useCallback((store: Store) => {
@@ -88,7 +89,7 @@ const App: React.FC = () => {
     setSelectedProposal(proposal);
     setCurrentView('edit_proposal');
   }, []);
-  
+
   const handleEditProduct = useCallback((product: Product) => {
     setSelectedProduct(product);
     setCurrentView('edit_product');
@@ -105,25 +106,25 @@ const App: React.FC = () => {
     });
     setCurrentView('products');
   };
-  
+
   const handleDeleteProduct = (productId: number) => {
-      if (window.confirm('Tem certeza que deseja excluir este produto?')) {
-          setProducts(prev => prev.filter(p => p.id !== productId));
-      }
-  };
-  
-  const handleDeleteProposal = (proposalId: string) => {
-    if (window.confirm('Tem certeza que deseja excluir esta proposta?')) {
-        setProposals(prev => prev.filter(p => p.id !== proposalId));
+    if (window.confirm('Tem certeza que deseja excluir este produto?')) {
+      setProducts(prev => prev.filter(p => p.id !== productId));
     }
   };
-  
+
+  const handleDeleteProposal = (proposalId: string) => {
+    if (window.confirm('Tem certeza que deseja excluir esta proposta?')) {
+      setProposals(prev => prev.filter(p => p.id !== proposalId));
+    }
+  };
+
   const handleUpdateFollowUp = (proposalId: string, followUp: { date: string; notes: string; } | null) => {
-      setProposals(prevProposals => 
-          prevProposals.map(p => 
-              p.id === proposalId ? { ...p, followUp: followUp || undefined } : p
-          )
-      );
+    setProposals(prevProposals =>
+      prevProposals.map(p =>
+        p.id === proposalId ? { ...p, followUp: followUp || undefined } : p
+      )
+    );
   };
 
   const filteredProposals = useMemo(() => {
@@ -133,7 +134,7 @@ const App: React.FC = () => {
 
   const renderCrmContent = () => {
     if (!selectedStore && user) {
-        return <div className="p-8 text-center"><h1 className="text-2xl font-bold">Nenhuma loja selecionada</h1><p>Por favor, selecione uma loja para começar.</p></div>;
+      return <div className="p-8 text-center"><h1 className="text-2xl font-bold">Nenhuma loja selecionada</h1><p>Por favor, selecione uma loja para começar.</p></div>;
     }
 
     switch (currentView) {
@@ -142,7 +143,7 @@ const App: React.FC = () => {
       case 'proposals':
         return <ProposalsList proposals={filteredProposals} onNewProposal={() => setCurrentView('new_proposal')} onEditProposal={handleEditProposal} onDeleteProposal={handleDeleteProposal} onUpdateFollowUp={handleUpdateFollowUp} />;
       case 'new_proposal':
-        return <ProposalForm onBack={() => setCurrentView('proposals')} products={products} storeId={selectedStore!.id} onSaveProposal={(p) => setProposals(prev => [...prev, p])}/>;
+        return <ProposalForm onBack={() => setCurrentView('proposals')} products={products} storeId={selectedStore!.id} onSaveProposal={(p) => setProposals(prev => [...prev, p])} />;
       case 'edit_proposal':
         return <ProposalForm proposal={selectedProposal} onBack={() => setCurrentView('proposals')} products={products} storeId={selectedStore!.id} onSaveProposal={(p) => setProposals(prev => prev.map(pr => pr.id === p.id ? p : pr))} />;
       case 'products':
@@ -169,6 +170,8 @@ const App: React.FC = () => {
         return <ClientsList clients={clients} />;
       case 'calculator':
         return <BudgetCalculator products={products} />;
+      case 'automation':
+        return <AutomationPanel />;
     }
   };
 
@@ -197,7 +200,7 @@ const App: React.FC = () => {
                 </nav>
 
                 {/* Menu Button - Right Side */}
-                <button 
+                <button
                   className="lg:hidden bg-secondary/90 backdrop-blur-sm text-primary p-3 rounded-lg shadow-lg border border-secondary/20 hover:bg-accent-light hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary"
                   onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                   aria-label="Abrir menu de navegação"
@@ -213,9 +216,9 @@ const App: React.FC = () => {
             </div>
           </header>
           <div className="flex h-screen bg-admin-background text-admin-primary pt-20">
-            <Sidebar 
-              setCurrentView={setCurrentView} 
-              userRole={user.role} 
+            <Sidebar
+              setCurrentView={setCurrentView}
+              userRole={user.role}
               stores={stores}
               selectedStore={selectedStore}
               setSelectedStore={setSelectedStore}
